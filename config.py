@@ -8,7 +8,7 @@ config = {
     "TEST_IMG_ROWS":1918,
     "TEST_IMG_COLS":1280,
     "model_path": "pretrained/carvana_model.h5",
-    "test_img_path": "test_images/29bb3ece3180_11.jpg" 
+    "test_img_path": "test_images/train" 
 }
 
 class dotdict(dict):

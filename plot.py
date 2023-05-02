@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 
-def display(display_list):
+def display(display_list,filename):
     plt.figure(figsize=(15, 15))
 
     for i in range(len(display_list)):
         plt.subplot(1, len(display_list), i+1)
         plt.imshow(display_list[i])
         plt.axis('off')
+    plt.savefig("test_images/outputs/"+filename)
     plt.show()
 
 def plot_model_results(results):

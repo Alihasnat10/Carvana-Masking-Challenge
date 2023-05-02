@@ -1,2 +1,5 @@
 __pycache__
 *.h5
+*.jpg
+*.png
+*.zip

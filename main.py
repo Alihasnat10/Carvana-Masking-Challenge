@@ -5,6 +5,7 @@ from config import opt
 import numpy as np
 import imageio
 import cv2
+import os
 
 if __name__ == "__main__":
     if opt.train_check:
@@ -29,8 +30,8 @@ if __name__ == "__main__":
     if opt.predict_check:
         if not opt.train_check:
             unet = load_model(opt.model_path)
-
-        img = np.array([cv2.resize(imageio.imread(opt.test_img_path), (opt.IMG_ROWS, opt.IMG_COLS))])/255.0
-        pred_mask = unet.predict(img)[0]
-        bin_mask = 255. * cv2.resize(pred_mask, (opt.TEST_IMG_ROWS, opt.TEST_IMG_COLS))
-        display([img[0], bin_mask])
+        for path in os.listdir(opt.test_img_path)[:10]:
+            img = np.array([cv2.resize(imageio.v2.imread("test_images/train/"+path), (opt.IMG_ROWS, opt.IMG_COLS))])/255.0
+            pred_mask = unet.predict(img)[0]
+            bin_mask = 255. * cv2.resize(pred_mask, (opt.TEST_IMG_ROWS, opt.TEST_IMG_COLS))
+            display([img[0], bin_mask], path)
